@@ -1,5 +1,7 @@
 name: Análisis de Seguridad con Trivy
 
+# Comentario para desencadenar el workflow
+
 # Se ejecuta automáticamente en:
 # - push a la rama main
 # - pull requests
