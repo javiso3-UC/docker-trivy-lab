@@ -41,7 +41,7 @@ FROM debian:13-slim
 # Sin rm -rf /var/lib/apt/lists/* → la caché de apt se queda en la imagen
 # RUN apt-get update && apt-get install -y openssl curl wget netcat-traditional && rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && apt-get install -y openssl curl wget python3 && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y openssl curl python3 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y openssl wget python3 && rm -rf /var/lib/apt/lists/*
 
 # === USUARIO ===
 # TODO: Crear usuario no-root y cambiar a él
