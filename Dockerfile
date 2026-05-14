@@ -39,9 +39,10 @@ FROM debian:13-slim
 #RUN apt-get install -y wget
 #RUN apt-get install -y netcat-traditional
 # Sin rm -rf /var/lib/apt/lists/* → la caché de apt se queda en la imagen
-# RUN apt-get update && apt-get install -y openssl curl wget netcat-traditional && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y openssl curl wget netcat-traditional && rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && apt-get install -y openssl curl wget python3 && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y openssl wget python3 && rm -rf /var/lib/apt/lists/*
+#curl y wget instalan dependencias con CVEs críticos asociados que no están resueltos en Debian Trixie 13.4. No se instalarán.
+RUN apt-get update && apt-get install -y openssl python3 && rm -rf /var/lib/apt/lists/*
 
 # === USUARIO ===
 # TODO: Crear usuario no-root y cambiar a él
@@ -64,7 +65,7 @@ USER appuser
 
 # === COMANDO DE INICIO ===
 # TODO: Reemplazar por un comando seguro
-# CMD ["sh", "-c", "while true; do nc -l -p 80 -e /bin/bash; done"]
+#CMD ["sh", "-c", "while true; do nc -l -p 80 -e /bin/bash; done"]
 CMD ["python3", "-m", "http.server", "80"]
 
 # =============================================
