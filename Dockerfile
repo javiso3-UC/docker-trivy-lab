@@ -28,7 +28,8 @@
 # === IMAGEN BASE ===
 # TODO: Cambiar esta imagen base (debian:13-slim es más moderna y segura)
 #FROM debian:11-slim
-FROM debian:forky-slim
+#FROM debian:forky-slim
+FROM debian:13-slim
 
 # === INSTALACIÓN DE PAQUETES ===
 # Cada RUN es una capa nueva → imagen más grande, cache ineficiente
@@ -39,7 +40,8 @@ FROM debian:forky-slim
 #RUN apt-get install -y netcat-traditional
 # Sin rm -rf /var/lib/apt/lists/* → la caché de apt se queda en la imagen
 # RUN apt-get update && apt-get install -y openssl curl wget netcat-traditional && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y openssl curl wget python3 && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y openssl curl wget python3 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y python3 && rm -rf /var/lib/apt/lists/*
 
 # === USUARIO ===
 # TODO: Crear usuario no-root y cambiar a él
